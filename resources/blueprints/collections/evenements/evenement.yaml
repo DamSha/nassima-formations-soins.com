@@ -1,0 +1,86 @@
+title: Événement
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: Titre
+              instructions_position: above
+              listable: true
+              visibility: visible
+              always_save: true
+              input_type: text
+              antlers: false
+          -
+            handle: date_evenement
+            field:
+              mode: single
+              inline: false
+              full_width: false
+              columns: 2
+              rows: 1
+              time_enabled: false
+              time_seconds_enabled: false
+              format: 'd/m/Y h:i'
+              type: date
+              display: 'Date événement'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+      -
+        display: Détails
+        fields:
+          -
+            handle: description_evenement
+            field: bard_base.bard_base
+            config:
+              display: Description
+          -
+            handle: lien_externe
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Lien externe'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: image_evenement
+            field:
+              max_files: 1
+              mode: grid
+              container: medias
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'image evenement'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              replicator_preview: true
+              folder: Evenements
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

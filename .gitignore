@@ -1,0 +1,65 @@
+# === Laravel / Statamic Standard ===
+/vendor/
+/node_modules/
+/public/hot
+/public/build
+/public/mix-manifest.json
+
+# === Cache & Logs ===
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+/storage/*
+!/storage/app/.gitignore
+!/storage/framework/.gitignore
+!/storage/logs/.gitignore
+
+# === Statamic dynamic content (non versionné) ===
+/content/
+/public/assets/
+/site/storage/
+
+# === Environnement ===
+.env
+.env.*
+.phpunit.result.cache
+
+# === IDE / OS ===
+.DS_Store
+*.swp
+*.swo
+*.log
+.idea/
+.vscode/
+
+# === Deployment / Deployer ===
+/deploy.php.lock
+/deployer.phar
+
+# === Optional if used ===
+#/resources/theme/
+
+
+/.phpunit.cache
+/node_modules
+#/public/build
+#/public/hot
+/public/storage
+/public/vendor/statamic
+/storage/*.key
+/storage/pail
+/vendor
+#.env
+.env.backup
+.env.production
+#.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+#.DS_Store
+/auth.json
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed

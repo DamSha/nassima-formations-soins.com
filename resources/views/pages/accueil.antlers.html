@@ -1,0 +1,41 @@
+
+<section 
+    class="ftco-section ftco-intro" 
+    style="background-image: url({{ banner }});background-size: 300px;background-color: #334455;background-position: 10vh center;min-height: 55vh;"
+>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-md-7">
+                <div class="heading-section ftco-animate" style="text-shadow: 4px 4px 7px black;">
+                    <h1 class="mb-4 text-white">{{ title }}</h1>
+                    <h2 class="mb-4 text-white">{{ sous_titre }}</h2>
+                </div>
+                {{# <p class="ftco-animate text-white"></p> #}}
+            </div>
+        </div>
+    </div>
+</section>
+
+{{# intro #}}
+{{ if teaser }}
+<section class="ftco-section d-md-flex bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <p>{{ teaser }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{{ /if }}
+
+{{# Section Détails #}}
+{{ contenu_de_la_page }}
+    {{ partial src="sets/{type}" }}
+    {{ /partial}}
+{{ /contenu_de_la_page }}
+
+<div class="avis--carousel">
+    {{ partial src="_avis_google__elfsight" }}
+    {{ /partial }}
+</div>

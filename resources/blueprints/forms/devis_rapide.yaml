@@ -1,0 +1,60 @@
+sections:
+  main:
+    display: Principal
+    fields:
+      -
+        handle: nom_complet
+        field:
+          input_type: text
+          antlers: false
+          display: 'Nom complet'
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+          width: 50
+      -
+        handle: e-mail
+        field:
+          input_type: email
+          antlers: false
+          display: E-mail
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+          width: 50
+      -
+        handle: devis_pour
+        field:
+          input_type: text
+          antlers: true
+          default: '{{ permalink }}'
+          display: 'Devis pour'
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: read_only
+          always_save: true
+      -
+        handle: form_message
+        field:
+          antlers: false
+          display: Message
+          type: textarea
+          icon: textarea
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required

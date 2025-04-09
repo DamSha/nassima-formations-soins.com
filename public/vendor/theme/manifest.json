@@ -1,0 +1,33 @@
+{
+  "resources/theme/fonts/flaticon/Flaticon.eot": {
+    "file": "assets/Flaticon-oWALQ3Zp.eot",
+    "src": "resources/theme/fonts/flaticon/Flaticon.eot"
+  },
+  "resources/theme/fonts/flaticon/Flaticon.svg": {
+    "file": "assets/Flaticon-Bbw-Nh5k.svg",
+    "src": "resources/theme/fonts/flaticon/Flaticon.svg"
+  },
+  "resources/theme/fonts/flaticon/Flaticon.ttf": {
+    "file": "assets/Flaticon-0qoR93_G.ttf",
+    "src": "resources/theme/fonts/flaticon/Flaticon.ttf"
+  },
+  "resources/theme/fonts/flaticon/Flaticon.woff": {
+    "file": "assets/Flaticon-juVgc8sW.woff",
+    "src": "resources/theme/fonts/flaticon/Flaticon.woff"
+  },
+  "resources/theme/js/main.js": {
+    "file": "assets/main-BVh0caSP.js",
+    "name": "main",
+    "src": "resources/theme/js/main.js",
+    "isEntry": true,
+    "css": [
+      "assets/main-j3LSDizC.css"
+    ],
+    "assets": [
+      "assets/Flaticon-oWALQ3Zp.eot",
+      "assets/Flaticon-juVgc8sW.woff",
+      "assets/Flaticon-0qoR93_G.ttf",
+      "assets/Flaticon-Bbw-Nh5k.svg"
+    ]
+  }
+}

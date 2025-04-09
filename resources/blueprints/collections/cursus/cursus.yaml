@@ -1,0 +1,362 @@
+title: Cursus
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        display: Info
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: sous_titre
+            field:
+              type: text
+              validate:
+                - required
+              display: sous-titre
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              replicator_preview: true
+              input_type: text
+              antlers: false
+              hide_display: false
+          -
+            handle: descriptif
+            field:
+              buttons:
+                - h3
+                - bold
+                - unorderedlist
+                - removeformat
+              smart_typography: false
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: true
+              enable_paste_rules: true
+              remove_empty_nodes: trim
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: Descriptif
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: nombre_de_places_max
+            field:
+              type: integer
+              display: 'Nombre de places max'
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: nombre_de_places_restantes
+            field:
+              type: integer
+              display: 'Nombre de places restantes'
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+      -
+        display: 'Image principale'
+        fields:
+          -
+            handle: image_principale
+            field:
+              max_files: 1
+              min_files: 1
+              mode: grid
+              container: medias
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Image Principale'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              replicator_preview: true
+              folder: Sessions
+  formation_dates:
+    display: Formation
+    sections:
+      -
+        display: Formation
+        fields:
+          -
+            handle: formation
+            field:
+              max_items: 1
+              mode: select
+              create: false
+              collections:
+                - formations
+              type: entries
+              display: Formation
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+      -
+        display: paramètres
+        fields:
+          -
+            handle: lieu
+            field:
+              max_items: 1
+              mode: select
+              create: true
+              collections:
+                - lieux
+              type: entries
+              display: Lieu
+              instructions: |-
+                * Choix du lieu [(ajout/modification)](/cp/collections/lieux).
+                * __Si non choisi : Lieu par défaut.[(modification)](/cp/globals/donnees_par_defaut)__
+              listable: hidden
+              instructions_position: below
+              visibility: visible
+              hide_display: false
+          -
+            handle: methode_dinscription
+            field:
+              max_items: 1
+              mode: select
+              create: true
+              collections:
+                - methode_inscription
+              type: entries
+              display: "Méthode d'inscription"
+              instructions: |-
+                * Choix de la méthode d'inscription [(ajout/modification)](/cp/collections/methode_inscription).
+                * __Si non choisi : Méthode par défaut.[(modification)](/cp/globals/donnees_par_defaut)__
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+  sessions:
+    display: Sessions
+    sections:
+      -
+        display: 'Nouvelle section'
+        fields:
+          -
+            handle: date_premiere_session
+            field:
+              mode: single
+              inline: false
+              full_width: false
+              columns: 1
+              rows: 1
+              time_enabled: false
+              time_seconds_enabled: false
+              type: date
+              display: 'Date première session'
+              instructions: 'Date de la première session'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: deroulement_des_sessions
+            field:
+              buttons:
+                - h3
+                - bold
+                - unorderedlist
+              smart_typography: false
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: true
+              enable_paste_rules: true
+              remove_empty_nodes: false
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: 'Déroulement des sessions'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: sessions_de_cursus
+            field:
+              collapse: false
+              previews: true
+              fullscreen: true
+              sets:
+                nouveau_groupe_densembles:
+                  display: "Nouveau groupe d'ensembles"
+                  instructions: null
+                  icon: null
+                  sets:
+                    nouvel_ensemble:
+                      display: Session
+                      instructions: null
+                      icon: presentation-board
+                      fields:
+                        -
+                          handle: nom_de_la_session
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: 'Nom de la session'
+                            instructions: 'Indiquer le nom et numéro du module'
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                        -
+                          handle: descriptif_de_la_session
+                          field:
+                            buttons:
+                              - h2
+                              - h3
+                              - bold
+                              - italic
+                              - unorderedlist
+                              - orderedlist
+                              - removeformat
+                              - quote
+                              - anchor
+                              - image
+                              - table
+                            smart_typography: false
+                            save_html: false
+                            inline: false
+                            toolbar_mode: fixed
+                            reading_time: false
+                            word_count: false
+                            fullscreen: true
+                            allow_source: true
+                            enable_input_rules: true
+                            enable_paste_rules: true
+                            remove_empty_nodes: false
+                            antlers: false
+                            link_noopener: false
+                            link_noreferrer: false
+                            target_blank: false
+                            always_show_set_button: false
+                            collapse: false
+                            previews: true
+                            type: bard
+                            display: 'Descriptif de la session'
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                        -
+                          handle: date_de_debut
+                          field:
+                            mode: single
+                            inline: false
+                            full_width: false
+                            columns: 3
+                            rows: 1
+                            time_enabled: true
+                            time_seconds_enabled: false
+                            type: date
+                            display: 'Date de début'
+                            width: 50
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                        -
+                          handle: duree
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: Durée
+                            width: 50
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+              type: replicator
+              display: 'Sessions de cursus'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  images:
+    display: Images
+    sections:
+      -
+        display: "Gallerie d'images"
+        fields:
+          -
+            handle: gallery
+            field:
+              max_files: 10
+              mode: grid
+              container: medias
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: Gallery
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              replicator_preview: true
+              folder: Sessions
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

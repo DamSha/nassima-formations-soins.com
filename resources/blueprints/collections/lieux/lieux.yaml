@@ -1,0 +1,103 @@
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: 'Nom du lieu'
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              input_type: text
+              antlers: false
+              hide_display: false
+          -
+            handle: adresse_complete
+            field:
+              antlers: false
+              type: textarea
+              display: 'Adresse complète'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: lien_google_maps
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Lien Google Maps'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: instructions
+            field:
+              buttons:
+                - h2
+                - bold
+                - unorderedlist
+                - removeformat
+                - anchor
+                - image
+              smart_typography: false
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: false
+              enable_paste_rules: false
+              remove_empty_nodes: trim
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: Instructions
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: unique_default
+            field:
+              default: false
+              type: toggle
+              display: 'Par défaut'
+              listable: true
+              instructions_position: above
+              visibility: read_only
+              duplicate: false
+              hide_display: false
+              always_save: true
+              always: 'TRUE == TRUE'
+              replicator_preview: true
+              instructions: 'Changer dans les [**Parametres**](/cp/globals/donnees_par_defaut)'
+title: Lieux

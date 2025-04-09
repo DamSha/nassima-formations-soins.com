@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Nassima</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {{# <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet"> #}}
+    {{ googlefonts }}
+
+    {{# <link rel="preload" href="/vendor/theme/css/theme.css" as="style"> #}}
+{{#     <link rel="stylesheet" type="text/css" href="{{ vite:asset src="resources/css/site.css" }}"> #}}
+<!--    <link rel="stylesheet" type="text/css" href="/vendor/theme/css/app.css">-->
+
+    {{# SLICK SLIDER #}}
+{{#     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> #}}
+{{#     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> #}}
+    {{ vite src="resources/theme/js/main.js" }}
+</head>
+<body>
+    {{ partial:partials.header }}
+        <main id="main_content">
+            {{ template_content }}
+        </main>
+    {{ partial:partials.footer }}
+
+
+{{#     <script src="/vendor/theme/js/app.js"></script> #}}
+{{#     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> #}}
+{{#     <script src="/vendor/theme/js/main.js"></script> #}}
+    {{# <script src="js/site.js"></script> #}}
+
+    {{# <script src="js/vendor/jquery.min.js"></script> #}}
+    {{# <script src="js/vendor/jquery-migrate-3.0.1.min.js"></script> #}}
+    {{# <script src="js/vendor/popper.min.js"></script> #}}
+    {{# <script src="js/vendor/bootstrap.min.js"></script> #}}
+
+{{#     <link href="{{ vite:asset src="resources/theme/js/main.js" }}"/> #}}
+{{#     <link href="{{ vite:asset src="resources/theme/js/main.js" }}"/> #}}
+
+{{#     {{ vite src="resources/js/app.js|resources/css/app.css" }} #}}
+        {{#     {{ recaptcha }} #}}
+</body>
+</html>

@@ -1,0 +1,49 @@
+title: 'Contenu Texte Simple'
+fields:
+  -
+    handle: bard_base
+    field:
+      collapse: true
+      always_show_set_button: false
+      previews: true
+      buttons:
+        - h3
+        - h4
+        - h5
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - quote
+        - anchor
+        - image
+        - table
+        - underline
+        - superscript
+        - subscript
+        - horizontalrule
+      container: medias
+      save_html: false
+      toolbar_mode: fixed
+      link_noopener: false
+      link_noreferrer: false
+      target_blank: false
+      reading_time: false
+      fullscreen: true
+      allow_source: true
+      enable_input_rules: false
+      enable_paste_rules: false
+      antlers: false
+      remove_empty_nodes: trim
+      display: 'Contenu Texte Simple'
+      type: bard
+      icon: bard
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      smart_typography: false
+      inline: false
+      word_count: false
+      hide_display: false
+      instructions: 'Contenu de texte simple uniquement.'

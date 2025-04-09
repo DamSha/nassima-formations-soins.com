@@ -1,0 +1,29 @@
+title: 'Titres de section'
+fields:
+  -
+    handle: suptitle
+    field:
+      input_type: text
+      antlers: false
+      display: 'Titre mini'
+      type: text
+      icon: text
+      instructions: 'Titre court en petit au dessus du titre principal'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
+  -
+    handle: titre_principal
+    field:
+      input_type: text
+      antlers: false
+      display: 'Titre principal'
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      validate:
+        - required

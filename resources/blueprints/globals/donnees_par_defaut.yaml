@@ -1,0 +1,36 @@
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        fields:
+          -
+            handle: lieu_par_defaut
+            field:
+              max_items: 1
+              mode: select
+              create: true
+              collections:
+                - lieux
+              type: entries
+              display: 'lieu par défaut'
+              icon: entries
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: methode_dinscription_par_defaut
+            field:
+              max_items: 1
+              mode: select
+              create: true
+              collections:
+                - methode_inscription
+              type: entries
+              display: "Méthode d'inscription par défaut"
+              icon: entries
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false

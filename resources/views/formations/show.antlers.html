@@ -1,0 +1,290 @@
+{{#
+- title
+- sous_titre
+- introduction_courte
+- image_formation
+- details
+- prerequis
+- objectifs
+- competences
+- duree
+- delai_dacces
+- methodes_mobilisees
+- modalites_devaluation
+- accessibilite
+
+- programme_intro
+- tarifs
+
+- programme
+    - titre_module
+    - introduction_module
+    - prerequis
+    - objectifs
+    - competences
+    - duree
+    - tarif
+    - tarif_details
+    - modalites_devaluation
+
+    - titre_module
+    - detail
+
+- introduction_sessions
+
+- faq_intro
+- questions_reponses
+    - question
+    - reponse
+
+- avis_intro
+- avis
+    - avis_nom
+    - feedback
+    - avis_region
+#}}
+
+    {{# Hero Banner #}}
+{{ partial src="hero_banner"
+    :image_principale="image_formation"
+    :title="title"
+    :sous_titre="sous_titre"
+}}
+{{ /partial }}
+
+{{# Sticky nav #}}
+{{ partial src="components/sticky_nav"}}{{ /partial }}
+
+
+{{# intro #}}
+<section class="ftco-section d-md-flex bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <h2>{{ introduction_courte }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{# Section Détails #}}
+{{ partial src="section_content"
+section_id="formation_details"
+:section_content="details"
+:section_suptitle="details_suptitle"
+:section_title="details_titre_principal"
+}}
+{{#
+<div  class="row">
+    <div class="col-md-6">
+        {{ if prerequis != null }}
+        <div class="mb-5">
+            <h3>Prérequis : </h3>
+            {{ prerequis }}
+        </div>
+        {{ /if }}
+
+        {{ if objectifs != null }}
+        <div class="mb-5">
+            <h3>Objectifs : </h3>
+            {{ objectifs }}
+        </div>
+        {{ /if }}
+
+        {{ if competences != null }}
+        <div class="mb-5">
+            <h3>Competences : </h3>
+            {{ competences }}
+        </div>
+        {{ /if }}
+
+        {{ if duree != null }}
+        <div class="mb-5">
+            <h3>Durée : </h3>
+            {{ duree }}
+        </div>
+        {{ /if }}
+    </div>
+
+    <div class="col-md-6">
+        {{ if delai_dacces != null }}
+        <div class="mb-5">
+            <h3>Délai d'acces : </h3>
+            {{ delai_dacces }}
+        </div>
+        {{ /if }}
+
+        {{ if methodes_mobilisees != null }}
+        <div class="mb-5">
+            <h3>Méthodes mobilisées : </h3>
+            {{ methodes_mobilisees }}
+        </div>
+        {{ /if }}
+
+        {{ if modalites_devaluation != null }}
+        <div class="mb-5">
+            <h3>Modalites d'évaluation : </h3>
+            {{ modalites_devaluation }}
+        </div>
+        {{ /if }}
+
+        {{ if accessibilite != null }}
+        <div class="mb-5">
+            <h3>Accessibilité : </h3>
+            {{ accessibilite }}
+        </div>
+        {{ /if }}
+    </div>
+</div>
+ #}}
+{{ /partial }}
+
+
+{{# Section Programme #}}
+{{ partial src="section_content"
+section_id="programme"
+:section_content="programme_intro"
+:section_suptitle="programme_suptitle"
+:section_title="programme_titre_principal"
+}}
+    Téléchargez le programme complet de la formation :
+    <a href="{{ fichier_programme }}"></a>
+{{#
+<div class="accordion" id="programme--accordion">
+    {{ programme }}
+    <div class="card">
+        <div class="card-header p-0" id="heading--{{ index }}-t">
+            <a href="javascript:void(0);"
+            class="accordion-link p-3 h5 d-block {{ first ? '' : 'collapsed'}}"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#programme-collapse--{{ index }}-t"
+            aria-expanded="{{ first ? ' true' : 'false' }}"
+            aria-controls="programme-collapse--{{ index }}-t"
+            >
+            {{ titre_module }}
+        </a>
+    </div>
+
+    <div id="programme-collapse--{{ index }}-t"
+    class="collapse {{ first ? ' show' : ''}}"
+    aria-labelledby="heading--{{ index }}-t"
+    data-parent="#programme--accordion">
+
+        <div class="card-body">
+        {{ if type == 'module_qualiopi' }}
+        {{ introduction_module }}
+            <div class="row">
+                <div class="col-md-6">
+                    <ul>
+                    {{ if prerequis }} <li><strong>Prérequis :</strong> {{ prerequis }}</li> {{ /if }}
+                    {{ if objectifs }} <li><strong>Objectifs :</strong> {{ objectifs }}</li> {{ /if }}
+                    {{ if competences }} <li><strong>Competences :</strong> {{ competences }}</li> {{ /if }}
+                    {{ if modalites_devaluation }} <li><strong>Modalités d'évaluation :</strong> {{ modalites_devaluation }} €</li> {{ /if }}
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                    {{ if duree }} <li><strong>Durée :</strong> {{ duree }}</li> {{ /if }}
+                    {{ if tarif }} <li><strong>Tarif :</strong> {{ tarif }} €</li> {{ /if }}
+                    {{ if tarif_details }} <li>{{ tarif_details }} €</li> {{ /if }}
+                    </ul>
+                </div>
+            </div>
+        {{ /if }}
+        </div>
+    </div>
+</div>
+{{ /programme }}
+</div>
+#}}
+{{ /partial }}
+
+{{# Section Prochaines Sessions #}}
+{{# formation__id = entry_id #}}
+{{# {{ partial src="section_content" #}}
+{{# section_id="cursus" #}}
+{{# :section_suptitle="lieu_suptitle" #}}
+{{# :section_title="lieu_titre_principal" #}}
+{{# }} #}}
+{{#     {{ partial src="next_cursus" #}}
+{{#     :formation__id="entry_id" #}}
+{{#     }} #}}
+{{#     {{ /partial }} #}}
+{{# {{ /partial }} #}}
+
+{{# Section FAQ #}}
+{{ partial src="section_content"
+section_id="faq"
+:section_content="faq_intro"
+:section_suptitle="faq_suptitle"
+:section_title="faq_titre_principal"
+}}
+
+{{ questions_reponses as="faq" }}
+<div class="accordion" id="faq--accordion">
+    {{ faq }}
+    <div class="card">
+        <div class="card-header p-0" id="heading--{{ index }}-f">
+            <a href="javascript:void(0);"
+            class="accordion-link p-3 h6 d-block {{ first ? '' : 'collapsed'}}"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapse--{{ index }}-f"
+            aria-expanded="{{ first ? ' true' : 'false' }}"
+            aria-controls="collapse--{{ index }}-f"
+            >
+            {{ question }}
+        </a>
+    </div>
+
+    <div id="collapse--{{ index }}-f"
+    class="collapse{{ first ? ' show' : ''}}"
+    aria-labelledby="heading--{{ index }}-f"
+    data-parent="#faq--accordion">
+    <div class="card-body"
+    >
+    {{ reponse }}
+</div>
+</div>
+</div>
+{{ /faq }}
+</div>
+{{ /questions_reponses }}
+{{ /partial }}
+
+{{# Section Avis #}}
+{{ partial src="section_content"
+section_id="avis"
+}}
+
+{{ slot:section_title }}
+    {{ avis_titre_principal }}
+{{ /slot:section_title }}
+{{ slot:section_suptitle }}
+    {{ avis_suptitle }}
+{{ /slot:section_suptitle }}
+
+    <div class="avis--carousel_">
+        {{ avis }}
+        <div class="item">
+            <div class="testimony-wrap p-4 pb-5" style="max-width: 60vw;">
+                <div class="text">
+                    <div class="line pl-5">
+                        {{ feedback }}
+                        <span class="quote d-flex align-items-center justify-content-center">
+                            {{ svg src="icons/quote-right" class="p-2" fill="white" }}
+                        </span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="ml-4">
+                            <p class="name">{{ avis_nom }} ({{ date_formation_avis }})</p>
+                            <span class="position">{{ avis_region }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ /avis }}
+    </div>
+{{ /partial }}

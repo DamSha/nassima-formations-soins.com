@@ -1,0 +1,54 @@
+{{#
+    @vars
+    - :methode
+    - titre_etape
+    - texte_etape
+    - fichier_a_dl
+    - nom_du_document
+    - lien_du_document
+    #}}
+
+    {{ if (methode != null ) }} {{ methode_retenue = methode }}
+    {{ else }} {{ methode_retenue = donnees_par_defaut:methode_dinscription_par_defaut.id }}
+    {{ /if}}
+
+    {{ get_content:methode_retenue }}
+            <div class="accordion" id="etapes--accordion">
+                {{ etapes }}
+                <div class="card">
+                    <div class="card-header p-0" id="heading--{{ index }}-t">
+                        <a href="javascript:void(0);"
+                        class="accordion-link p-3 h5 d-block {{ first ? '' : 'collapsed'}}"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#etapes-collapse--{{ index }}-t"
+                        aria-expanded="{{ first ? ' true' : 'false' }}"
+                        aria-controls="etapes-collapse--{{ index }}-t"
+                        >
+                            Etape {{ index+1 }} - {{ titre_etape }}
+                        </a>
+                    </div>
+                </div>
+
+                <div id="etapes-collapse--{{ index }}-t"
+                class="collapse {{ first ? ' show' : ''}}"
+                aria-labelledby="heading--{{ index }}-t"
+                data-parent="#etapes--accordion">
+                    <div class="card-body">
+                        {{ if type == 'etape' }}
+                            {{ texte_etape }}
+                            {{ fichier_a_dl }}
+                            {{ if type == "document" }}
+                            <ul>
+                                <li>
+                                    {{ nom_du_document }} : <a href="{{ lien_du_document }}" target="_blank" download>{{ lien_du_document:filename }}.{{ lien_du_document:extension }} ({{ lien_du_document:size }})</a>
+                                </li>
+                            </ul>
+                            {{ /if }}
+                                {{ /fichier_a_dl }}
+                        {{ /if }}
+                    </div>
+                </div>
+                {{ /etapes }}
+            </div>
+    {{ /get_content:methode_retenue }}

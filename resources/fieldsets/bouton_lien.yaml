@@ -1,0 +1,78 @@
+title: 'Bouton lien Activator + Decorator'
+fields:
+  -
+    handle: activer_bouton
+    field:
+      mode: toggle
+      input_label: 'Activer un bouton'
+      type: revealer
+      display: 'Activer bouton'
+      icon: revealer
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: bouton_de_lien
+    field:
+      type: section
+      display: 'Bouton de lien'
+      icon: section
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      if:
+        activer_bouton: 'equals 1'
+  -
+    handle: titre_bouton
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: 'Titre bouton'
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      if:
+        activer_bouton: 'equals 1'
+  -
+    handle: lien_bouton
+    field:
+      collections:
+        - pages
+        - formations
+        - sessions
+        - evenements
+      container: medias
+      type: link
+      display: 'Lien bouton'
+      icon: link
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      if:
+        activer_bouton: 'equals 1'
+  -
+    handle: apparence_bouton
+    field:
+      options:
+        primary: 'Normal (rose)'
+        info: 'Info (bleu)'
+        succes: 'Succès (vert)'
+        black: Noir
+      default: primary
+      type: button_group
+      display: 'Apparence bouton'
+      icon: button_group
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      if:
+        activer_bouton: 'equals 1'

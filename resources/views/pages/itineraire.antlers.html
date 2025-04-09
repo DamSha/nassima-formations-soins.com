@@ -1,0 +1,69 @@
+{{#
+    @vars
+    title
+    image_principale
+    sous_titre
+    teaser
+    contenu_de_la_page
+    
+    events
+    title
+    date_evenement
+    description_evenement
+    lien_externe
+    image_evenement
+    
+    #}}
+    
+    {{# Hero Banner #}}
+    {{ partial src="hero_banner"
+    :image_principale="image_principale"
+    :title="title"
+    :sous_titre="sous_titre"
+}}{{ /partial }}
+
+{{# intro #}}
+{{ if teaser }}
+<section class="ftco-section d-md-flex bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <h2>{{ teaser }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+{{ /if }}
+
+{{# Section Détails #}}
+{{ contenu_de_la_page }}
+{{ partial src="sets/{type}" /}}
+{{ /contenu_de_la_page }}
+
+{{# Itinéraire #}}
+<div class="container">
+    <div class="row">
+        {{collection:lieux limit="1" scope="lieu"}}
+        {{ if no_results }}
+        <p>Pas de lieu actif.</p>
+        {{ else }}
+        
+        <div class="col-12">
+            {{ partial:section_title section_title="Adresse" }}
+            <div class="blog-entry w-100 h3 text-center">
+                {{ lieu.adresse_complete | nl2br }}
+                {{ if lieu.lien_google_maps }}
+                    <p><a href="{{ lieu.lien_google_maps }}" target="_blank">Lien Google maps</a></p>
+                {{ /if }}
+            </div>
+        </div>
+        <div class="col-12">
+            {{ partial:section_title section_title="Itinéraires" }}
+            <div class="blog-entry w-100">
+                {{ lieu.instructions }}
+            </div>
+        </div>
+        {{ /if }}
+        {{/collection:lieux}}
+    </div>
+</div>

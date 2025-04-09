@@ -1,0 +1,60 @@
+{{#
+    TOUTES LES SESSIONS A VENIR DE LA FORMATION
+    @vars
+    - formation__id
+    #}}
+    <div class="row">
+        {{ collection:sessions :formation:is="formation__id" limit="9" scope="session" sort="date_debut:asc" date_debut:is_after="now"}}
+        {{ if no_results }}
+        <div class="col text-center">
+            <p>Pas de session prévue prochainement.</p>
+        </div>
+        {{ else }}
+        
+        <div class="col-md-6 col-lg-4 d-flex ftco-animate fadeInUp ftco-animated">
+            <div class="blog-entry w-100">
+                {{ $img_dim = [510, 270] }}
+                <a href="{{ session.url }}" class="block-20" style="background-image: url({{glide:image_principale fit="crop_focal" :width='$img_dim[0]' :height='$img_dim[1]'}});">
+                </a>
+                <div class="text p-4 float-right d-block">
+                    
+                    <div class="d-flex align-items-center pt-2 mb-4">
+                        <div class="one">
+                            <span class="day">{{ date_debut iso_format="D" }}</span>
+                        </div>
+                        <div class="two">
+                            <span class="yr">{{ date_debut iso_format="MMMM" }}</span>
+                            <span class="mos">{{ date_debut iso_format="Y" }}</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="heading mt-2"><a href="{{ session.url }}">{{ session.title }}</a></h3>
+                    
+                    {{ session.descriptif | safe_truncate(90, "...") | strip_tags }}
+                    
+                    {{ if nombre_de_place }}
+                        <p>Places : maximum {{ nombre_de_place }}</p>
+                    {{ /if }}
+                    <hr>
+                    <p>
+                        {{ if session.lieu }}
+                        {{ session.lieu.title }}
+                        {{ else }}
+                        {{collection:lieux limit="1" scope="lieu"}}
+                        {{ lieu.title }}
+                        {{/collection:lieux}}
+                        {{ /if }}
+                    </p>
+                    
+                    {{ if session_pleine }}
+                        <p class="btn btn-info d-block px-2 py-4">Session pleine</p>
+                    {{ else }}
+                        <a href="{{ session.url }}" class="btn btn-primary d-block px-2 py-4">S'inscrire</a>
+                    {{ /if }}
+                </div>
+            </div>
+        </div>
+        {{ /if }}
+        {{ /collection:sessions }}
+    </div>
+    

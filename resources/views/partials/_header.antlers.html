@@ -1,0 +1,45 @@
+{{# MAIN_MENU : NAVIGATION PRINCIPALE  #}}
+{{ cache scope="page" }}
+<nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand text-body" href="/">
+            <img src="{{ glide :src="parametres:logo:url" width="60" }}" alt="Nassima">
+            Nassima
+        </a>
+    <button class="navbar-toggler collapsed" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#ftco-nav"
+            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+            {{ nav:main_menu select="title|url" max_depth="2" }}
+                {{ if (children | count) > 0 }}
+                    {{# lien dropdown #}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-{{ index }}"
+                           role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                        {{ title }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-{{ index }}">
+                        {{ children }}
+                        <a class="dropdown-item {{ is_current ? 'active' : '' }}" href="{{ url }}">{{ title }}</a>
+                        {{ /children }}
+                    </div>
+                </li>
+                {{ else }}
+                    {{#  Lien simple #}}
+
+                    <li class="nav-item {{ is_current ? 'active' : '' }}">
+                        <a href="{{ url }}" class="nav-link">{{ title }}</a>
+                    </li>
+                {{ /if }}
+            {{ /nav:main_menu }}
+        </ul>
+    </div>
+</div>
+</nav>
+{{ /cache }}

@@ -1,0 +1,64 @@
+{% extends 'master.twig' %}
+{% from "macros/thumbnails.twig" import img_thumb_base_lazy %}
+{% from "macros/thumbnails.twig" import picture_thumb_static %}
+{#
+fields:
+    title:
+      type: text
+      label: Titre
+      class: large
+      group: Contenu
+    date:
+      type: date
+      label: Date
+    preview:
+      type: textarea
+      label: Aperçu
+      postfix: |
+        Un aperçu attractif du contenu utilisé dans les listes
+    image:
+      type: image
+      label: Image
+      upload: actualites
+    content:
+      type: html
+      label: Contenu détaillé
+#}
+
+{% block body_id %}news{% endblock body_id %}
+
+{% block main %}
+
+    {# entête #}
+    <h1 class="news__title">{{ record.title }}</h1>
+    {% if record|taxonomies.categories is defined %}
+        <div class="news__taxonomy">
+            {% for news_categories in record|taxonomies.categories %}
+                <a href="{{ news_categories|link }}">{{ news_categories.name|capitalize }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="news__date">
+        {% if record.date|date("d/m/Y") == "now"|date("d/m/Y") %}
+            Aujourd'hui
+        {% else %}
+            {{ record.date|date("d/m/Y") }}
+        {% endif %}
+    </div>
+    {# image #}
+    {% if record.image is not empty %}
+        <div class="news__image">
+            {{ img_thumb_base_lazy(record.image, record.image.alt) }}
+        </div>
+    {% endif %}
+
+    {# contenus #}
+    {% if record.content is not empty %}
+        <div class="news__content">
+            {{ record.content }}
+        </div>
+    {% endif %}
+
+
+{% endblock main %}

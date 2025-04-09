@@ -1,0 +1,153 @@
+title: 'Contenu Texte + Blocs'
+fields:
+  -
+    handle: bard_blocs_defaut
+    field:
+      collapse: true
+      always_show_set_button: false
+      previews: true
+      buttons:
+        - h3
+        - h4
+        - h5
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - quote
+        - anchor
+        - image
+        - table
+        - underline
+        - superscript
+        - subscript
+        - horizontalrule
+        - alignleft
+        - aligncenter
+        - alignright
+      save_html: false
+      toolbar_mode: fixed
+      link_noopener: false
+      link_noreferrer: false
+      target_blank: false
+      reading_time: false
+      fullscreen: true
+      allow_source: true
+      enable_input_rules: false
+      enable_paste_rules: false
+      antlers: false
+      remove_empty_nodes: trim
+      display: 'Contenu Texte + Blocs par défaut'
+      type: bard
+      icon: bard
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      smart_typography: false
+      inline: false
+      word_count: false
+      sets:
+        titre_section:
+          display: 'titre section'
+          instructions: 'Titre et sous-titre de section de page'
+          icon: text-formatting-all-caps
+          sets:
+            titre_section:
+              display: 'Titre section'
+              instructions: 'Titre et sous-titre des sections de page'
+              icon: text-formatting-all-caps
+              fields:
+                -
+                  import: titres_de_section
+            texte_image:
+              display: 'Texte + image'
+              instructions: null
+              icon: text-formatting-wrap-image-right
+              fields:
+                -
+                  handle: texte_base
+                  field:
+                    buttons:
+                      - h3
+                      - bold
+                      - italic
+                      - underline
+                      - superscript
+                      - unorderedlist
+                      - orderedlist
+                      - horizontalrule
+                      - alignleft
+                      - aligncenter
+                      - alignright
+                      - alignjustify
+                      - anchor
+                    smart_typography: true
+                    save_html: false
+                    inline: false
+                    toolbar_mode: fixed
+                    reading_time: false
+                    word_count: false
+                    fullscreen: false
+                    allow_source: true
+                    enable_input_rules: false
+                    enable_paste_rules: false
+                    remove_empty_nodes: trim
+                    antlers: false
+                    link_noopener: false
+                    link_noreferrer: false
+                    target_blank: false
+                    always_show_set_button: false
+                    collapse: false
+                    previews: true
+                    type: bard
+                    display: Texte
+                    icon: bard
+                    width: 50
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    hide_display: false
+                -
+                  handle: image_base
+                  field:
+                    max_files: 1
+                    mode: grid
+                    container: medias
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    show_set_alt: true
+                    type: assets
+                    display: 'Image Base'
+                    icon: assets
+                    width: 50
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    hide_display: false
+            images_gallery:
+              display: "Galerie d'images"
+              instructions: null
+              icon: media-image-picture-gallery
+              fields:
+                -
+                  handle: images_gallery
+                  field:
+                    max_files: 12
+                    mode: grid
+                    container: medias
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    show_set_alt: true
+                    type: assets
+                    display: "Galerie d'images"
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    hide_display: false
+      hide_display: false
+      instructions: 'Contenu de texte simple + Blocs par défaut.'
+      container: medias

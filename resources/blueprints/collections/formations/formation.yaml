@@ -1,0 +1,249 @@
+title: Formation
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: 'Titre de la formation'
+              listable: true
+              always_save: true
+          -
+            handle: sous_titre
+            field:
+              display: 'Sous titre'
+              type: text
+              always_save: false
+          -
+            handle: introduction_courte
+            field:
+              display: 'Introduction courte'
+              type: textarea
+              always_save: false
+          -
+            handle: image_formation
+            field:
+              max_files: 1
+              mode: grid
+              container: medias
+              type: assets
+              display: 'Image Formation'
+  detail:
+    display: Détails
+    sections:
+      -
+        fields:
+          -
+            import: titres_de_section
+            prefix: details_
+          -
+            handle: details
+            field: bard_base.bard_base
+            config:
+              display: Détails
+          -
+            handle: programme_complet
+            field: bard_base.bard_base
+            config:
+              display: 'Programme complet'
+  programme:
+    display: Programme
+    sections:
+      -
+        fields:
+          -
+            import: titres_de_section
+            prefix: programme_
+          -
+            handle: programme_intro
+            field: bard_base.bard_base
+            config:
+              display: Introduction
+          -
+            handle: fichier_programme
+            field:
+              max_files: 1
+              min_files: 1
+              container: documents
+              type: assets
+              display: 'fichier programme'
+              instructions: 'Fichier PDF contenant le programme complet et les tarifs.'
+              restrict: true
+  sessions:
+    display: Sessions
+    sections:
+      -
+        display: Sessions
+        instructions: 'Les sessions peuvent être éditer dans [CONTENU/Sessions](/cp/collections/sessions)'
+        fields:
+          -
+            import: titres_de_section
+            prefix: lieu_
+          -
+            handle: introduction_sessions
+            field: bard_base.bard_base
+            config:
+              display: 'Introduction Sessions'
+  faq:
+    display: 'Questions diverses'
+    sections:
+      -
+        fields:
+          -
+            import: titres_de_section
+            prefix: faq_
+          -
+            handle: faq_intro
+            field: bard_base.bard_base
+            config:
+              display: 'faq intro'
+          -
+            handle: questions_reponses
+            field:
+              display: Questions/Réponses
+              type: replicator
+              always_save: false
+              sets:
+                main:
+                  display: Principal
+                  sets:
+                    questions_reponses:
+                      display: 'Question / Réponse'
+                      icon: alert-help-question
+                      fields:
+                        -
+                          handle: question
+                          field:
+                            input_type: text
+                            antlers: false
+                            display: Question
+                            type: text
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            always_save: false
+                        -
+                          handle: reponse
+                          field:
+                            collapse: false
+                            always_show_set_button: false
+                            previews: true
+                            buttons:
+                              - bold
+                              - italic
+                              - anchor
+                              - underline
+                              - superscript
+                              - subscript
+                            save_html: false
+                            toolbar_mode: fixed
+                            link_noopener: false
+                            link_noreferrer: false
+                            target_blank: false
+                            reading_time: false
+                            fullscreen: true
+                            allow_source: true
+                            enable_input_rules: false
+                            enable_paste_rules: false
+                            antlers: false
+                            remove_empty_nodes: true
+                            display: Réponse
+                            type: bard
+                            icon: bard
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            always_save: false
+  avis:
+    display: 'Avis stagiaires'
+    sections:
+      -
+        fields:
+          -
+            import: titres_de_section
+            prefix: avis_
+          -
+            handle: avis_intro
+            field: bard_base.bard_base
+            config:
+              display: 'avis intro'
+          -
+            handle: avis
+            field:
+              display: Avis
+              type: replicator
+              always_save: false
+              sets:
+                main:
+                  display: Principal
+                  sets:
+                    nouvel_ensemble:
+                      display: avis
+                      fields:
+                        -
+                          handle: avis_nom
+                          field:
+                            input_type: text
+                            antlers: false
+                            display: Nom
+                            type: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            always_save: true
+                            width: 50
+                        -
+                          handle: avis_region
+                          field:
+                            input_type: text
+                            antlers: false
+                            display: Région
+                            type: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            always_save: false
+                            width: 50
+                        -
+                          handle: feedback
+                          field:
+                            antlers: false
+                            display: Avis
+                            type: textarea
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            always_save: true
+                        -
+                          handle: date_formation_avis
+                          field:
+                            input_type: text
+                            placeholder: MM/AAAA
+                            antlers: false
+                            type: text
+                            display: 'date formation avis'
+                            instructions: 'Mois et année de la formation suivie.'
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

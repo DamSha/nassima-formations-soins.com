@@ -1,0 +1,119 @@
+{{#
+    @vars
+    title
+    image_principale
+    sous_titre
+    teaser
+    contenu_de_la_page
+    
+    events
+    title
+    date_evenement
+    description_evenement
+    lien_externe
+    image_evenement
+
+    #}}
+    
+    {{# Hero Banner #}}
+    {{ partial src="hero_banner"
+    :image_principale="image_principale"
+    :title="title"
+    :sous_titre="sous_titre"
+}}{{ /partial }}
+
+{{# intro #}}
+{{ if teaser }}
+<section class="ftco-section d-md-flex bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <h2>{{ teaser }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+{{ /if }}
+
+{{# Section Détails #}}
+{{ contenu_de_la_page }}
+{{ partial src="sets/{type}" /}}
+{{ /contenu_de_la_page }}
+
+{{# Liste evenements #}}
+<div class="row">
+    {{ collection:evenements date_evenement:is_after="now" sort="date_evenement:asc" }}
+    {{ if no_results }}
+    <p>Pas d'événement prévu prochainement.</p>
+    {{ else }}
+    
+    <div class="col-md-6 col-lg-4 d-flex ftco-animate fadeInUp ftco-animated">
+        <div class="blog-entry w-100">
+                {{ $img_dim = [510, 270] }}
+                
+                <a href="#" data-toggle="modal" data-target="#Modal-{{ id }}" 
+                class="block-20" 
+                style="background-image: url({{glide:image_evenement fit="crop_focal" :width="510" }});">
+                </a>
+            <div class="text p-4 float-right d-block">
+                
+                <div class="d-flex align-items-center pt-2 mb-4">
+                    <div class="one">
+                        <span class="day">{{ date_evenement iso_format="D" }}</span>
+                    </div>
+                    <div class="two">
+                        <span class="yr">{{ date_evenement iso_format="MMMM" }}</span>
+                        <span class="mos">{{ date_evenement iso_format="Y" }}</span>
+                    </div>
+                </div>
+                
+                <h3 class="heading mt-2">{{ title }}</h3>
+                
+                
+                <hr>
+                <p>
+                {{ description_evenement | safe_truncate(100, "...") | strip_tags }}
+                </p>
+                
+                <!-- Button trigger modal -->
+                <button data-toggle="modal" data-target="#Modal-{{ id }}" class="btn btn-primary w-100 d-block px-2 py-4">Détails</button>
+            
+        </button>
+  
+  
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Modal-{{ id }}" tabindex="-1" role="dialog" aria-labelledby="Modal-{{ id }}--Label" aria-hidden="true">
+        <div class="mt-5 pt-5 modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="Modal-{{ id }}--Label">{{ title }}</h5>
+            <div class="ml-5 text-center text-secondary">{{ date_evenement iso_format="D MMMM Y" }}</div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                {{ if image_evenement }}
+                <div class="text-center">
+                    <img class="img-fluid" src="{{glide:image_evenement fit="crop_focal" :width="600"}}" alt="poster {{ title }}">
+                </div>
+                {{ /if }}
+                <div>{{ description_evenement }}</div>
+            </div>
+            {{ if lien_externe }}
+            <div class="modal-footer">
+            {{# <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button> #}}
+                <a href="{{ lien_externe }}" title="{{ lien_externe }}" target="_blank" type="button" class="btn btn-primary">Voir en ligne</a>
+            </div>
+            {{ /if }}
+        </div>
+        </div>
+    </div>
+
+    {{ /if }}
+    {{ /collection:evenements }}
+</div>

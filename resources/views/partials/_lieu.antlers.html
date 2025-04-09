@@ -1,0 +1,17 @@
+{{#
+    @vars
+    - :lieu
+        - title
+        - adresse_complete
+        - instructions
+        - slug
+    #}}
+    
+    {{ if (lieu != null ) }} {{ lieu_retenu = lieu }}
+    {{ else }} {{ lieu_retenu = donnees_par_defaut.lieu_par_defaut.id }}
+    {{ /if}}
+
+    {{ get_content:lieu_retenu }}
+        {{ adresse_complete }}
+        {{ instructions }}
+    {{ /get_content:lieu_retenu }}

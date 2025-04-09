@@ -1,0 +1,10 @@
+{{#
+@vars
+- fluid
+#}}
+<div class="{{ if fluid }}container-fluid{{ else }}container{{ /if }}" >
+        <div class="row">
+            {{ slot }}
+        </div>
+    </div>
+</div>

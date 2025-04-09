@@ -1,0 +1,98 @@
+{#
+fields:
+    title:
+      type: text
+      label: Titre
+      class: large
+      group: Contenu
+    date:
+      type: date
+      label: Date
+    preview:
+      type: textarea
+      label: Aperçu
+      postfix: |
+        Un aperçu attractif du contenu utilisé dans les listes
+    image:
+      type: image
+      label: Image
+      upload: actualites
+    content:
+      type: html
+      label: Contenu détaillé
+#}
+{% extends 'master.twig' %}
+{% from "macros/thumbnails.twig" import img_thumb_base_lazy %}
+
+{% block body_id %}listing_news{% endblock body_id %}
+
+{% block main %}
+
+    <section>
+        <div class="uk-container">
+
+            <h1>Retrouvez ici l'ensemble des actualités</h1>
+
+            <section class="uk-section">
+                <div class="uk-container">
+                    {% if records is not empty %}
+                        <div class="uk-child-width-1-2@l" uk-grid>
+                            {% for record in records %}
+                                <div>
+                                    <div class="uk-card uk-card-default uk-margin-small-left" uk-grid>
+                                        <div class="uk-padding-remove uk-margin-le">
+                                            {# header carte avec image titre et date #}
+                                            <div class="uk-card-header">
+                                                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                                    {% if record.image is not empty %}
+                                                        {# image reduite du contenu #}
+                                                        <div class="uk-width-auto uk-border-circle">
+                                                            {{ img_thumb_base_lazy(record.image, record.image.alt, ['100px','100px','100px','100px']) }}
+                                                        </div>
+                                                    {% endif %}
+                                                    <div class="uk-width-expand">
+                                                        {# titre du contenu #}
+                                                        <h3 class="uk-card-title uk-margin-remove-bottom">{{ record.title }}</h3>
+
+                                                        {# date du contenu #}
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                        <div>
+                                                            {% if record.date|date("d/m/Y") == "now"|date("d/m/Y") %}
+                                                                Aujourd'hui
+                                                            {% else %}
+                                                                {{ record.date|date("d/m/Y") }}
+                                                            {% endif %}
+                                                        </div>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {# aperçu du contenu #}
+                                            <div class="uk-card-body">
+                                                {% if record.preview is not empty %}
+                                                    <p>{{ record.preview|excerpt(150) }}</p>
+                                                {% else %}
+                                                    <p>{{ record.content|excerpt(150) }}</p>
+                                                {% endif %}
+                                            </div>
+                                            <hr class="uk-divider-icon">
+
+                                            {# footer carte read more #}
+                                            <div class="uk-card-footer">
+                                                <a href="{{ record|link }}" class="uk-button uk-button-text">Read more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        Pas d'actualité à afficher.
+                    {% endif %}
+                </div>
+            </section>
+
+        </div>
+    </section>
+{% endblock main %}

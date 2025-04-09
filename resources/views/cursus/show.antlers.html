@@ -1,0 +1,152 @@
+{{#
+   @vars:
+- title -- type: text
+- sous_titre -- input_type: text
+- descriptif --
+
+- formation -- max_items: 1
+- date_premiere_session -- mode: single
+
+- lieu -- max_items: 1
+- methode_dinscription -- max_items: 1
+- image_principale -- max_files: 1
+- gallery -- max_files: 10
+- slug -- type: slug
+
+- deroulement_des_sessions -- text
+- sessions_de_cursus : Replicator
+    - Session :
+        - nom_de_la_session
+        - descriptif_de_la_session
+        - date_de_debut
+        - duree
+
+#}}
+
+{{# Hero Banner #}}
+{{ partial src="hero_banner"
+    :image_principale="image_principale"
+    :title="title"
+    :sous_titre="sous_titre"
+}}
+{{ /partial }}
+
+
+{{# intro #}}
+<section class="ftco-section d-md-flex bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <h2>{{ descriptif}}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{# Sessions #}}
+{{ partial src="section_content"
+    section_id="cursus_sessions"
+    section_suptitle="Sessions"
+    section_title="Agenda des Sessions"
+}}
+    <p>{{ deroulement_des_sessions }}</p>
+    <div class="row">
+        {{ sessions_de_cursus }}
+            <div class="col-md-6 d-flex ftco-animate fadeInUp ftco-animated">
+                <div class="blog-entry w-100">
+                    <div class="text p-4 float-right d-block">
+                        <div class="d-flex align-items-center pt-4 mb-4">
+                            <div class="one">
+                                <span class="mos">{{ date_de_debut iso_format="dddd" }}</span>
+                            </div>
+                            <div class="one mx-3">
+                                <span class="day">{{ date_de_debut iso_format="D" }}</span>
+                            </div>
+                            <div class="two">
+                                <span class="yr">{{ date_de_debut iso_format="MMMM" }}</span>
+                                <span class="mos">{{ date_de_debut iso_format="Y" }}</span>
+                            </div>
+                            <div class="two">
+                                Durée : {{ duree }}
+                            </div>
+                        </div>
+                        <h3>{{ nom_de_la_session }}</h3>
+                        <p>{{ descriptif_de_la_session }}</p>
+                        <p>{{ date_de_debut iso_format="dddd D MMMM Y, HH\hmm" }}<br>
+                            Durée : {{ duree }}</p>
+                    </div>
+                </div>
+            </div>
+        {{ /sessions_de_cursus }}
+    </div>
+{{ /partial }}
+
+{{# Section Détails #}}
+{{ partial src="section_content"
+    section_id="formation_details"
+    section_suptitle="Formation"
+    :section_title="formation.title"
+}}
+    {{ formation_details = formation.details }}
+    {{ formation_details | safe_truncate(600, '...') }}
+    <p><a href="{{formation.url}}">Détail de la formation</a></p>
+{{ /partial }}
+
+
+{{# Section Inscriptions #}}
+{{ partial src="section_content"
+    section_id="inscription_details"
+    section_title="Méthode d'inscription"
+}}
+    {{ partial src="methode_inscription" :methode="methode_dinscription" /}}
+{{ /partial }}
+
+
+{{# Section Lieu #}}
+{{ partial src="section_content"
+    section_id="lieu_details"
+    section_title="Lieu"
+}}
+    {{ partial src="lieu" :lieu="lieu" /}}
+{{ /partial }}
+
+
+{{# Section FAQ #}}
+{{ partial src="section_content"
+    section_id="faq"
+    :section_content="formation.faq_intro_bard_base"
+    :section_suptitle="formation.faq_suptitle"
+    :section_title="formation.faq_titre_principal"
+}}
+    {{ formation.questions_reponses as="faq" }}
+        <div class="accordion" id="faq--accordion">
+            {{ faq }}
+                <div class="card">
+                    <div class="card-header p-0" id="heading--{{ index }}-f">
+                            <a href="javascript:void(0);"
+                                    class="accordion-link p-3 h6 d-block {{ first ? '' : 'collapsed'}}"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapse--{{ index }}-f"
+                                    aria-expanded="{{ first ? ' true' : 'false' }}"
+                                    aria-controls="collapse--{{ index }}-f"
+                            >
+                                {{ question }}
+                            </a>
+                    </div>
+
+                    <div id="collapse--{{ index }}-f"
+                         class="collapse {{ first ? 'show' : ''}}"
+                         aria-labelledby="heading--{{ index }}-f"
+                         data-parent="#faq--accordion">
+                        <div class="card-body"
+                        >
+                            {{ reponse }}
+                        </div>
+                    </div>
+                </div>
+            {{ /faq }}
+        </div>
+    {{ /formation.questions_reponses }}
+{{ /partial }}
+

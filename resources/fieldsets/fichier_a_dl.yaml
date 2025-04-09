@@ -1,0 +1,59 @@
+title: 'Fichiers à DL'
+fields:
+  -
+    handle: fichier_a_dl
+    field:
+      collapse: true
+      previews: true
+      fullscreen: true
+      sets:
+        nouveau_groupe_densembles:
+          display: "Nouveau groupe d'ensembles"
+          instructions: null
+          icon: null
+          sets:
+            document:
+              display: Document
+              instructions: null
+              icon: null
+              fields:
+                -
+                  handle: nom_du_document
+                  field:
+                    input_type: text
+                    antlers: false
+                    type: text
+                    display: 'Nom du Document'
+                    icon: text
+                    width: 50
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    hide_display: false
+                -
+                  handle: lien_du_document
+                  field:
+                    max_files: 1
+                    mode: list
+                    container: medias
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    show_set_alt: false
+                    type: assets
+                    display: Document
+                    icon: assets
+                    width: 50
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+      type: replicator
+      display: 'Fichiers à télécharger'
+      icon: replicator
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      replicator_preview: true

@@ -1,0 +1,10 @@
+name: Admin
+super: true
+id: 03064899-b142-49eb-a11e-e5e29993a5ba
+password_hash: $2y$12$pzvwLuK1K./LcFnZKa71p.6U5EtMhG6wtcyvxeEzRHG6VcD8x0.sa
+preferences:
+  locale: fr
+  favorites: {  }
+  collections:
+    formations:
+      after_save: continue_editing

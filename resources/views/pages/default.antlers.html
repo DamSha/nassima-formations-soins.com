@@ -1,0 +1,36 @@
+{{#
+    @vars
+    title
+    image_principale
+    sous_titre
+    teaser
+
+#}}
+
+{{# {{ dump }} #}}
+
+{{# Hero Banner #}}
+{{ partial src="hero_banner"
+    :image_principale="image_principale"
+    :title="title"
+    :sous_titre="sous_titre"
+    }}{{ /partial }}
+
+{{# intro #}}
+{{ if teaser }}
+<section class="ftco-section d-md-flex bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <h2>{{ teaser }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+{{ /if }}
+
+{{# Section Détails #}}
+{{ contenu_de_la_page }}
+    {{ partial src="sets/{type}" }}
+    {{ /partial}}
+{{ /contenu_de_la_page }}

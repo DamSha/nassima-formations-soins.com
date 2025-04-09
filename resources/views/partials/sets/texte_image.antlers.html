@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            {{ texte_base }}
+            {{ if activer_bouton === 1 }}
+                <p><a class="btn btn-outline-{{apparence_bouton}}" href="{{ lien_bouton }}">{{ titre_bouton }}</a></p>
+            {{ /if }}
+        </div>
+        <div class="col-md-6"><img class="img-fluid" src="{{ glide:image_base w="600" }}" alt="{{ caption }}" /></div>
+    </div>
+</div>

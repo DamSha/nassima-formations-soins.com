@@ -1,0 +1,106 @@
+{{#
+    @vars
+    title
+    image_principale
+    sous_titre
+    teaser
+    
+    #}}
+    
+    {{# {{ dump }} #}}
+    
+    {{# Hero Banner #}}
+    {{ partial src="hero_banner"
+    :image_principale="image_principale"
+    :title="title"
+    :sous_titre="sous_titre"
+}}{{ /partial }}
+
+{{# intro #}}
+{{ if teaser }}
+<section class="ftco-section d-md-flex bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <h2>{{ teaser }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+{{ /if }}
+
+{{# Section Détails #}}
+{{ contenu_de_la_page }}
+{{ partial src="sets/{type}" }}
+{{ /partial}}
+{{ /contenu_de_la_page }}
+
+{{# Adresse #}}
+<section class="ftco-section contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 contact-info ftco-animate bg-light p-4">
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <h2 class="h4">Contact</h2>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <h4>Adresse :</h4>
+                        {{ infos:adresse_complete | nl2br }}
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <p><h4>Téléphone :</h4> <a href="tel:{{ infos:telephone_contact }}">{{ infos:telephone_contact }}</a></p>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <p><h4>Email :</h4> <a href="mailto:{{ infos:email_contact }}">{{ infos:email_contact }}</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-1"></div> -->
+            
+            {{# Formulaire #}}
+
+
+            <div class="col-md-6 ftco-animate">
+                {{ form:contact_general }}
+                    {{ if success }}
+                        <div class="bg-green-300 text-white p-2">
+                            {{ success }}
+                        </div>
+                    {{ else }}
+                        {{ if errors }}
+                            <div class="bg-red-300 text-white p-2">
+                                {{ errors }}
+                                    {{ value }}<br>
+                                {{ /errors }}
+                            </div>
+                        {{ /if }}
+                
+                        {{ fields }}
+                            <div class="form-group">
+                                <label>{{ display }}
+                                    {{ if validate | contains:required }}
+                                        <sup class="text-red">*</sup>
+                                    {{ /if }}
+                                </label>
+                                <div class="">{{ field }}</div>
+                                {{ if error }}
+                                    <p class="text-gray-500">{{ error }}</p>
+                                {{ /if }}
+                            </div>
+                        {{ /fields }}
+                
+                        <input type="text" class="d-none" name="{{ honeypot ?? 'honeypot' }}">
+                    
+                        <div class="form-group">
+                            <input type="submit" value="Envoyer" class="btn btn-primary py-3 px-5">
+                        </div>
+                    {{ /if }}
+                
+                {{ /form:contact_general }}
+
+            </div>
+        </div>
+    </div>
+</section>
+

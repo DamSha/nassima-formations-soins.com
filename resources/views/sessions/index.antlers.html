@@ -1,0 +1,14 @@
+{{#
+    title
+    introduction_courte
+    image_principale
+
+#}}
+{{#     {{ dump }} #}}
+{{ session:dump }}
+{{ partial src="container" fluid="false" }}
+    {{ collection:sessions }}
+        {{ title }}
+        {{ introduction_courte }}
+    {{ /collection:sessions }}
+{{ /partial }}

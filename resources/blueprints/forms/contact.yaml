@@ -1,0 +1,106 @@
+sections:
+  main:
+    display: Principal
+    fields:
+      -
+        handle: prenom
+        field:
+          input_type: text
+          antlers: false
+          display: Prénom
+          type: text
+          icon: text
+          width: 50
+          listable: true
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+          placeholder: 'Saisissez votre prénom'
+      -
+        handle: nom
+        field:
+          input_type: text
+          antlers: false
+          display: Nom
+          type: text
+          icon: text
+          width: 50
+          listable: true
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+          placeholder: 'Saisissez votre nom'
+      -
+        handle: e-mail
+        field:
+          input_type: email
+          antlers: false
+          display: E-mail
+          type: text
+          icon: text
+          width: 50
+          listable: true
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+          placeholder: unexemple@mail.com
+      -
+        handle: n_de_telephone
+        field:
+          input_type: tel
+          antlers: false
+          display: 'N° de téléphone'
+          type: text
+          icon: text
+          width: 50
+          listable: true
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          placeholder: '05 90 12 34 56'
+      -
+        handle: objet
+        field:
+          input_type: text
+          antlers: false
+          display: Objet
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+      -
+        handle: form_message
+        field:
+          antlers: false
+          display: Message
+          type: textarea
+          icon: textarea
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+          placeholder: 'Saisissez votre message ici...'
+      -
+        handle: t_et_c
+        field:
+          inline_label: '<span><sup class="text-danger">*</sup>J''ai lu et j''accepte les termes et conditions ainsi que la politique de confidentialité du site</span>'
+          default: false
+          display: 'T&C'
+          type: toggle
+          icon: toggle
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required

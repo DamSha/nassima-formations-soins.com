@@ -1,0 +1,123 @@
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: explications
+            field: bard_blocs_defaut.bard_blocs_defaut
+            config:
+              display: Explications
+  steps:
+    display: Etapes
+    sections:
+      -
+        display: 'Nouvelle section'
+        fields:
+          -
+            handle: etapes
+            field:
+              collapse: true
+              previews: true
+              fullscreen: true
+              sets:
+                nouveau_groupe_d_ensembles:
+                  display: "Nouveau groupe d'ensembles"
+                  instructions: null
+                  icon: null
+                  sets:
+                    etape:
+                      display: Etape
+                      instructions: 'Etape {index} {{index}} {loop.index} {{loop.index}}'
+                      icon: edit-pin
+                      fields:
+                        -
+                          handle: titre_etape
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: 'Titre étape'
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: texte_etape
+                          field:
+                            buttons:
+                              - h3
+                              - bold
+                              - unorderedlist
+                              - orderedlist
+                              - removeformat
+                              - image
+                              - superscript
+                              - subscript
+                              - alignleft
+                              - aligncenter
+                            smart_typography: true
+                            save_html: false
+                            inline: false
+                            toolbar_mode: fixed
+                            reading_time: false
+                            word_count: false
+                            fullscreen: true
+                            allow_source: true
+                            enable_input_rules: false
+                            enable_paste_rules: false
+                            remove_empty_nodes: trim
+                            antlers: false
+                            link_noopener: false
+                            link_noreferrer: false
+                            target_blank: false
+                            container: documents
+                            always_show_set_button: false
+                            collapse: false
+                            previews: true
+                            type: bard
+                            display: 'Texte étape'
+                            icon: bard
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          import: fichier_a_dl
+              type: replicator
+              display: Etapes
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              replicator_preview: true
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - methode_inscription
+              max_items: 1
+              listable: false
+              localizable: true
+title: "Méthode d'inscription"

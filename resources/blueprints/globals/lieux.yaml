@@ -1,0 +1,64 @@
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        fields:
+          -
+            handle: nom_du_lieu
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Nom du lieu'
+              icon: text
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: adresse
+            field:
+              antlers: false
+              type: textarea
+              display: Adresse
+              icon: textarea
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: instructions
+            field:
+              buttons:
+                - h3
+                - bold
+                - unorderedlist
+                - removeformat
+                - anchor
+                - image
+              smart_typography: true
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: false
+              enable_paste_rules: false
+              remove_empty_nodes: trim
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: Instructions
+              icon: bard
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false

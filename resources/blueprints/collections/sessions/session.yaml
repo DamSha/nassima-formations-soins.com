@@ -1,0 +1,219 @@
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        display: 'Titre et descriptif'
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: sous_titre
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Sous-titre
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: descriptif
+            field:
+              buttons:
+                - bold
+                - underline
+                - italic
+                - unorderedlist
+                - orderedlist
+                - anchor
+                - horizontalrule
+              smart_typography: true
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: true
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: true
+              enable_paste_rules: false
+              remove_empty_nodes: trim
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: true
+              previews: false
+              type: bard
+              display: Descriptif
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: nombre_de_place
+            field:
+              input_type: number
+              antlers: false
+              type: text
+              display: 'Nombre de place max'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              replicator_preview: true
+          -
+            handle: session_pleine
+            field:
+              default: false
+              type: toggle
+              display: 'Session pleine'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+  formation_dates:
+    display: Formation
+    sections:
+      -
+        display: 'Formation et Date'
+        fields:
+          -
+            handle: formation
+            field:
+              max_items: 1
+              mode: select
+              create: false
+              collections:
+                - formations
+              type: entries
+              display: Formation
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: date_debut
+            field:
+              mode: single
+              inline: false
+              full_width: true
+              columns: 3
+              rows: 1
+              time_enabled: true
+              time_seconds_enabled: false
+              type: date
+              display: 'Date début'
+              instructions: 'Date de début de la Formation'
+              listable: hidden
+              instructions_position: below
+              visibility: visible
+              hide_display: false
+              always_save: true
+              validate:
+                - required
+              format: 'd/m/Y H:i'
+              duplicate: false
+      -
+        display: paramètres
+        fields:
+          -
+            handle: lieu
+            field:
+              max_items: 1
+              mode: select
+              create: true
+              collections:
+                - lieux
+              type: entries
+              display: Lieu
+              instructions: |-
+                * Choix du lieu [(ajout/modification)](/cp/collections/lieux).
+                * __Si non choisi : Lieu par défaut.[(modification)](/cp/globals/donnees_par_defaut)__
+              listable: hidden
+              instructions_position: below
+              visibility: visible
+              hide_display: false
+          -
+            handle: methode_dinscription
+            field:
+              max_items: 1
+              mode: select
+              create: true
+              collections:
+                - methode_inscription
+              type: entries
+              display: "Méthode d'inscription"
+              instructions: |-
+                * Choix de la méthode d'inscription [(ajout/modification)](/cp/collections/methode_inscription).
+                * __Si non choisi : Méthode par défaut.[(modification)](/cp/globals/donnees_par_defaut)__
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+  images:
+    display: Images
+    sections:
+      -
+        display: 'Image principale'
+        fields:
+          -
+            handle: image_principale
+            field:
+              max_files: 1
+              min_files: 1
+              mode: grid
+              container: medias
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Image Principale'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              replicator_preview: true
+              folder: Sessions
+      -
+        display: "Gallerie d'images"
+        fields:
+          -
+            handle: gallery
+            field:
+              max_files: 10
+              mode: grid
+              container: medias
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: Gallery
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              replicator_preview: true
+              folder: Sessions
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+title: Session

@@ -1,0 +1,108 @@
+{{#
+   @vars:
+- title -- type: text
+- sous_titre -- input_type: text
+- descriptif -- 
+
+- formation -- max_items: 1
+- date_debut -- mode: single
+
+- lieu -- max_items: 1
+- methode_dinscription -- max_items: 1
+- image_principale -- max_files: 1
+- gallery -- max_files: 10
+- slug -- type: slug
+#}}
+
+{{# Hero Banner #}}
+{{ partial src="hero_banner"
+    :image_principale="image_principale"
+    :title="title"
+    :sous_titre="sous_titre"
+}}
+{{ /partial }}
+
+
+{{# intro #}}
+<section class="ftco-section d-md-flex bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <h2>{{ descriptif}}</h2>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{{# Section Détails #}}
+{{ partial src="section_content"
+    section_id="formation_details"
+    section_suptitle="Formation"
+    :section_title="formation.title"
+}}
+    {{ formation_details = formation.details }}
+    {{ formation_details | safe_truncate(600, '...') }}
+    <p><a href="{{formation.url}}">Détail de la formation</a></p>
+    <h3>Date : </h3>
+    {{ date_debut iso_format="dddd D MMMM Y, HH\hmm" }}
+{{ /partial }}
+
+
+{{# Section Inscriptions #}}
+{{ partial src="section_content"
+    section_id="inscription_details"
+    section_title="Méthode d'inscription"
+}}
+    {{ partial src="methode_inscription" :methode="methode_dinscription" /}}
+{{ /partial }}
+
+
+{{# Section Lieu #}}
+{{ partial src="section_content"
+    section_id="lieu_details"
+    section_title="Lieu"
+}}
+    {{ partial src="lieu" :lieu="lieu" /}}
+{{ /partial }}
+
+
+{{# Section FAQ #}}
+{{ partial src="section_content"
+    section_id="faq"
+    :section_content="formation.faq_intro_bard_base"
+    :section_suptitle="formation.faq_suptitle"
+    :section_title="formation.faq_titre_principal"
+}}
+    {{ formation.questions_reponses as="faq" }}
+        <div class="accordion" id="faq--accordion">
+            {{ faq }}
+                <div class="card">
+                    <div class="card-header p-0" id="heading--{{ index }}-f">
+                            <a href="javascript:void(0);"
+                                    class="accordion-link p-3 h6 d-block {{ first ? '' : 'collapsed'}}"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#collapse--{{ index }}-f"
+                                    aria-expanded="{{ first ? ' true' : 'false' }}"
+                                    aria-controls="collapse--{{ index }}-f"
+                            >
+                                {{ question }}
+                            </a>
+                    </div>
+
+                    <div id="collapse--{{ index }}-f"
+                         class="collapse {{ first ? 'show' : ''}}"
+                         aria-labelledby="heading--{{ index }}-f"
+                         data-parent="#faq--accordion">
+                        <div class="card-body"
+                        >
+                            {{ reponse }}
+                        </div>
+                    </div>
+                </div>
+            {{ /faq }}
+        </div>
+    {{ /formation.questions_reponses }}
+{{ /partial }}
+
