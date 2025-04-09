@@ -38,7 +38,6 @@
 # === Optional if used ===
 #/resources/theme/
 
-
 /.phpunit.cache
 /node_modules
 #/public/build
