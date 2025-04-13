@@ -1,0 +1,35 @@
+
+$font-primary: 'Work Sans',Arial, sans-serif;
+
+$white: #fff;
+$black: #000;
+$darken: #111133;
+$dark-theme: #334455;
+
+$primary: #d291bc;
+$secondary: #fd6b00;
+
+.accordion {
+    .accordion-link {
+        padding-left: 2rem;
+        &::before {
+            content: "⨠";
+            color: $primary;
+            transform: rotate(57deg);
+            display: block;
+            transition: .3s ease-out all;
+            position: absolute;
+            left: 1rem;
+            top: 1.2rem;
+            font-size: 1.2rem;
+        }
+        &.collapsed::before {
+            top: .7rem;
+            transform: rotate(7deg);
+            left: .5rem;
+        }
+        &.collapsed:hover::before {
+            left: 1rem;
+        }
+    }
+}

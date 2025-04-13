@@ -227,7 +227,7 @@ section_id="faq"
     <div class="card">
         <div class="card-header p-0" id="heading--{{ index }}-f">
             <a href="javascript:void(0);"
-            class="accordion-link p-3 h6 d-block {{ first ? '' : 'collapsed'}}"
+            class="text-bg-dark text-decoration-none accordion-link ps-5 p-3 h6 d-block {{ first ? '' : 'collapsed'}}"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapse--{{ index }}-f"
@@ -256,6 +256,8 @@ section_id="faq"
 {{# Section Avis #}}
 {{ partial src="section_content"
 section_id="avis"
+:section_suptitle="avis_suptitle"
+:section_title="avis_titre_principal"
 }}
 
 {{ slot:section_title }}

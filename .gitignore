@@ -20,7 +20,7 @@
 
 # === Environnement ===
 .env
-.env.*
+#.env.*
 .phpunit.result.cache
 
 # === IDE / OS ===
@@ -47,7 +47,6 @@
 /storage/*.key
 /storage/pail
 /vendor
-#.env
 .env.backup
 .env.production
 #.phpunit.result.cache

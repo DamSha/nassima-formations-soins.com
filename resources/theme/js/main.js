@@ -11,7 +11,7 @@ import 'slick-carousel'
 
 import '../css/app.scss';
 
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importer le CSS de Bootstrap
+// import 'bootstrap/dist/css/bootstrap.min.css'; // Importer le CSS de Bootstrap
 import 'bootstrap'; // Importer le JS de Bootstrap
 // import './jquery.min.js';
 // import './jquery-migrate-3.0.1.min.js';

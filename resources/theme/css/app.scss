@@ -1,5 +1,6 @@
-@import 'bootstrap_custom';
-@import 'bootstrap/bootstrap';
+@import 'bootstrap_variables';
+
+@import 'bootstrap/scss/bootstrap';
 @import 'style.scss';
 @import 'animate.css';
 @import 'flaticon.css';
