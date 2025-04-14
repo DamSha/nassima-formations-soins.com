@@ -2,7 +2,7 @@
 /vendor/
 /node_modules/
 /public/hot
-/public/build
+#/public/build
 /public/mix-manifest.json
 
 # === Cache & Logs ===
@@ -40,7 +40,6 @@
 
 /.phpunit.cache
 /node_modules
-#/public/build
 #/public/hot
 /public/storage
 /public/vendor/statamic
