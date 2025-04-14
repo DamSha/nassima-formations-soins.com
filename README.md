@@ -7,6 +7,13 @@ Site Web pour le centre de formations et soins
 
 ## Fonctionnalités
 
+## Deploiement
+- Deployer :
+```
+vendor/bin/dep deploy dev -vvv
+vendor/bin/dep deploy prod -vvv
+```
+
 ## Solution Statamic
 
 Statamic is the flat-first, Laravel + Git powered CMS designed for building beautiful, easy to manage websites.
